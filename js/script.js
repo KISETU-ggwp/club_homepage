@@ -85,3 +85,55 @@ $(function() {
     $parent.children(".card-back").toggleClass(" rotate-card-back");
   });
 });
+
+
+(function() {
+  function createHomeButton() {
+    var existingButton = document.getElementById('persistentHomeButton');
+    if (existingButton) {
+      return; // ボタンが既に存在する場合は何もしない
+    }
+    var button = document.createElement('button');
+    button.id = 'persistentHomeButton';
+    button.innerHTML = '🏠';
+    button.setAttribute('aria-label', 'ホームページへ戻る');
+    button.style.cssText = `
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      font-size: 24px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      transition: background-color 0.3s, transform 0.3s;
+      z-index: 10000;
+    `;
+    button.addEventListener('click', function() {
+      window.location.href = '../index.html';
+    });
+    button.addEventListener('mouseover', function() {
+      this.style.backgroundColor = '#45a049';
+      this.style.transform = 'scale(1.1)';
+    });
+    button.addEventListener('mouseout', function() {
+      this.style.backgroundColor = '#4CAF50';
+      this.style.transform = 'scale(1)';
+    });
+    document.body.appendChild(button);
+  }
+  // ページ読み込み時にボタンを作成
+  createHomeButton();
+  // 1秒ごとにボタンの存在を確認し、なければ再作成
+  setInterval(createHomeButton, 1000);
+  // スクロールイベント時にもボタンの存在を確認
+  window.addEventListener('scroll', createHomeButton);
+})();
