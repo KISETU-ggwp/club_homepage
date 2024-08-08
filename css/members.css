@@ -142,13 +142,30 @@ body {
 .grid {
   display: grid;
   padding-top: 10px;
-  grid-template-columns: repeat(auto-fill, 304px);
-  grid-template-rows: repeat(auto-fill, 414px);
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   grid-gap: 1rem;
-  width: 960px;
-  max-width: 100%;
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  
+  justify-content: center;
+}
+
+@media (min-width: 600px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 /* Card styles for rotation */
@@ -684,3 +701,4 @@ ul.snsbtniti {
     padding: 0 20px;
   }
 }
+
