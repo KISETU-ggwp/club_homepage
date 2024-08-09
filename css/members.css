@@ -272,6 +272,12 @@ body {
   background-position: center center;
   background-size: cover;
 }
+#hayamamo {
+  background: url("../images/hayamamo_background.jpg");
+  height: 8em;
+  background-position: center center;
+  background-size: cover;
+}
 
 /*上の書き方だとmemberの数分同じものが増えるのでどうにかしたい*/
 .card .card-block {
